@@ -1,5 +1,5 @@
     var map;
-    
+
     function initMap(lat, lng, fixedCenter, zoom) {
       var latlng = new google.maps.LatLng(lat, lng);
       var opts = {
@@ -9,8 +9,31 @@
         center: latlng
       };
       map = new google.maps.Map(document.getElementById("gmap"), opts);
-			setMarker(lat, lng, map, fixedCenter);
+	    setMarker(lat, lng, map, fixedCenter);
+    
+
+    function onError() {
+      map.textContent = "Unable to locate you";
     }
+    function onSuccess(geo) {
+      const position1 = {
+        lat: geo.coords.latitude,
+        lng: geo.coords.longitude
+      };
+      // Reposition the map to the detected location
+      map.setCenter(position1);
+      map.setZoom(zoom === undefined)? 8 : zoom;
+      // Add a marker
+//      new google.maps.Marker({ position, map: map });
+    }
+    if(fixedCenter){
+    if (!navigator.geolocation) {
+      onError();
+    } else {
+      navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+    }
+  }
 
     function initMapSearchControl(controlUI) {
         controlUI.index = 1;
