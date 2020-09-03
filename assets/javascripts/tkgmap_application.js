@@ -11,7 +11,6 @@
       map = new google.maps.Map(document.getElementById("gmap"), opts);
 	    setMarker(lat, lng, map, fixedCenter);
     
-
     function onError() {
       map.textContent = "Unable to locate you";
     }
