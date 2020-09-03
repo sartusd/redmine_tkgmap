@@ -1,4 +1,9 @@
 # redmine_tkgmap  
+This is a fork of the plugin:
+https://github.com/shota-kobayashi/redmine_tkgmap
+Added automatic location and Russian language
+
+
 Adding a custom field that can choose latitude/longitude of location using google maps.  
 Note: This is an English language fork of original Japanese language code.  
   
